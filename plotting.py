@@ -27,7 +27,7 @@ def get_tensorflow_log(log_dirs: list, label: str):
 
         # Show all tags in the log file
         #print(event_acc.Tags())
-        assert label in event_acc.Tags(), "Selected label: {} does not exist in the list of selectable labels:\n {}".format(label, event_acc.Tags()["scalars"])
+        assert label in event_acc.Tags()["scalars"], "Selected label: {} does not exist in the list of selectable labels:\n {}".format(label, event_acc.Tags()["scalars"])
 
         # get data by label
         d =   event_acc.Scalars(label)
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     parser.add_argument("-t", "--title", type=str, action='append', nargs='+', help="Title of the plot")
     args = parser.parse_args()
 
-    print(args)
+    #print(args)
     num_alg = len(args.algorithm[0])
     assert len(args.logdir[0]) % num_alg == 0, "Algorithm need the same amount of training runs!"
     assert len(args.label[0]) ==  len(args.title[0]), "Not enough titles for the plots. If you compare more than one label you need different titles for each plot!"
