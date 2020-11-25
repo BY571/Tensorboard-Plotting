@@ -48,7 +48,7 @@ def create_dataset(data: dict, label:str):
     return data
 
 
-def plot(data_sets, title, algorithm, label):
+def plot(data_sets, title, algorithm, label, dir):
     fig = plt.figure(figsize=(15,8))
     plt.ticklabel_format(style='sci', axis='x',useOffset=False, scilimits=(0,0))
     for idx, data in enumerate(data_sets):
@@ -59,7 +59,7 @@ def plot(data_sets, title, algorithm, label):
     ax.xaxis.label.set_size(15)
 
     plt.legend(loc='lower right',fontsize=15)
-    plt.savefig(title+".png", dpi=300)
+    plt.savefig(dir+title+".png", dpi=300)
     plt.show()
 
 def chunks(l, n):
@@ -74,6 +74,7 @@ if __name__ == '__main__':
     parser.add_argument("-dir", "--logdir", type=str, action='append', nargs='+', help="Path to the run(s) you want to plot, for each algorithm same amount of runs!")
     parser.add_argument("-l", "--label", type=str, action='append', nargs='+', help="Label you want to plot, for example Reward")
     parser.add_argument("-t", "--title", type=str, action='append', nargs='+', help="Title of the plot")
+    parser.add_argument("-sd", "--savedir", type=str, default="", help="Save directory, default current directory")
     args = parser.parse_args()
 
     #print(args)
@@ -93,4 +94,4 @@ if __name__ == '__main__':
             dataset = create_dataset(data_log, args.label[0][i])
             data_per_label.append(dataset)
         
-        plot(data_per_label, args.title[0][i], args.algorithm, args.label[0][i])
+        plot(data_per_label, args.title[0][i], args.algorithm, args.label[0][i], args.savedir)
