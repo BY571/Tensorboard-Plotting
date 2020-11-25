@@ -27,6 +27,7 @@ def get_tensorflow_log(log_dirs: list, label: str):
 
         # Show all tags in the log file
         #print(event_acc.Tags())
+        assert label in event_acc.Tags(), "Selected label: {} does not exist in the list of selectable labels:\n {}".format(label, event_acc.Tags()["scalars"])
 
         # get data by label
         d =   event_acc.Scalars(label)
@@ -58,7 +59,7 @@ def plot(data_sets, title, algorithm, label):
     ax.xaxis.label.set_size(15)
 
     plt.legend(loc='lower right',fontsize=15)
-    plt.savefig("IQN_CP_.png", dpi=300)
+    plt.savefig("title.png", dpi=300)
     plt.show()
 
 def chunks(l, n):
