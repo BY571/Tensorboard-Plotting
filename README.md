@@ -13,7 +13,7 @@ See possible inputs:
 
 Following two examples of how you can use the plotting script. 
 
-** Imaginary training runs are included in this repo so you can enter the exact commands to get the example results ** 
+**Imaginary training runs are included in this repo so you can enter the exact commands to get the example results** 
 ### Example 1:
 You have trained the IQN algorithm on an training environment for two different seed and now you want to plot the reward. The both runs are called **cp_w1** and **cp_w4** and both are in the tensorboard logdir **runs**. 
 To plot the results you simply type in the console: 
