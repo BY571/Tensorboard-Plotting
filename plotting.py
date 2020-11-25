@@ -59,7 +59,7 @@ def plot(data_sets, title, algorithm, label):
     ax.xaxis.label.set_size(15)
 
     plt.legend(loc='lower right',fontsize=15)
-    plt.savefig("title.png", dpi=300)
+    plt.savefig(title+".png", dpi=300)
     plt.show()
 
 def chunks(l, n):
