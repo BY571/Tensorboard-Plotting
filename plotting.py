@@ -19,7 +19,6 @@ def get_tensorflow_log(log_dirs: list, label: str):
         'histograms': 1
     }
 
-
     steps, values = [], []
     for idx, path in enumerate(log_dirs):
         event_acc = EventAccumulator(path, tf_size_guidance)
@@ -83,8 +82,12 @@ if __name__ == '__main__':
     assert len(args.label[0]) ==  len(args.title[0]), "Not enough titles for the plots. If you compare more than one label you need different titles for each plot!"
 
     dirs = args.logdir
-    if num_alg > 1:
+    if num_alg > 1 and len(args.logdir[0]) != 2:
         dirs = chunks(args.logdir[0], n=num_alg)
+        print("jo")
+    elif num_alg > 1 and len(args.algorithm[0]) == 2 and len(args.logdir[0]) == 2:
+        dirs = [[args.logdir[0][0]],[args.logdir[0][1]]]
+
 
     for i in range(len(args.label[0])):
         print("Process Label: ", args.label[0][i])
