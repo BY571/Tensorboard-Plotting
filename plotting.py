@@ -83,8 +83,9 @@ if __name__ == '__main__':
 
     dirs = args.logdir
     if num_alg > 1 and len(args.logdir[0]) != 2:
-        dirs = chunks(args.logdir[0], n=num_alg)
-        print("jo")
+        #print(num_alg)
+        dirs = chunks(args.logdir[0], n= int(len(args.logdir[0])/num_alg))
+        #print(dirs)
     elif num_alg > 1 and len(args.algorithm[0]) == 2 and len(args.logdir[0]) == 2:
         dirs = [[args.logdir[0][0]],[args.logdir[0][1]]]
 
